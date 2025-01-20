@@ -1,0 +1,31 @@
+.product-card {
+    height: 30rem;
+    width: 20rem;
+    border: 1px solid black;
+    img {
+        height: 20rem;
+        width: 100%;
+        border-bottom: 1px solid black;
+    }
+    h3 {
+        margin: 0.5rem 1rem;
+        font-weight: bold;
+        font-size: 1.4rem;
+    }
+    div {
+        margin: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p {
+            text-decoration: underline;
+        }
+        .boton-comprar {
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 20px;
+        }
+    }
+}

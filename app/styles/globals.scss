@@ -1,7 +1,106 @@
-@import "layout/index";
-@import "components/index";
-@import "base/index";
+@forward "layout/index";
+@forward "components/index";
+@forward "base/index";
+@use "./base/variables" as v;
 
 .icon {
     font-size: 2.6rem;
+}
+
+// catálogo
+#catalogo-page {
+    h2 {
+        text-align: center;
+        font-size: 3rem;
+        margin: 2rem;
+        font-weight: bold;
+    }
+}
+
+#catalogo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    place-items: center;
+    margin: 1rem;
+    @media (min-width: v.$phone) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media (min-width: v.$tablet) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (min-width: v.$desktop) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+// producto
+
+.product-details {
+    h2 {
+        text-align: center;
+        font-size: 3rem;
+        margin: 1rem 2rem;
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        img {
+            width: 50rem;
+            @media (min-width: v.$tablet) {
+                width: 60rem;
+            }
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            margin: 1rem;
+            font-size: 1.2rem;
+            gap: 1rem;
+            p span {
+                font-weight: bold;
+            }
+            h4 {
+                font-size: 1.6rem;
+            }
+            ul {
+                li {
+                }
+            }
+            .rating {
+            }
+            .category {
+            }
+            .stock {
+            }
+            div {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 1.4rem;
+                .price {
+                    text-decoration: underline;
+                }
+                .boton-comprar {
+                    cursor: pointer;
+                    background-color: black;
+                    color: white;
+                    padding: 1rem;
+                    border-radius: 30px;
+                }
+            }
+            @media (min-width: v.$tablet) {
+                gap: 2rem;
+                font-size: 1.6rem;
+                h4 {
+                    font-size: 2.4rem;
+                    margin: 2rem 0;
+                }
+            }
+        }
+        @media (min-width: v.$tablet) {
+            flex-direction: row;
+        }
+    }
 }
