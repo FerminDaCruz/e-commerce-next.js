@@ -1,0 +1,40 @@
+@use "../base/variables" as v;
+
+#main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    .left {
+        h3 {
+            font-size: 1.6rem;
+        }
+    }
+    .center {
+        h1 {
+            font-size: 2.2rem;
+        }
+    }
+    .right {
+    }
+    .right,
+    .left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+}
+
+h3.shop,
+.icon.account {
+    display: none;
+}
+
+@media (min-width: v.$tablet) {
+    h3.shop,
+    .icon.account {
+        display: block;
+    }
+}

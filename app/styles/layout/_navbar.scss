@@ -1,0 +1,44 @@
+@use "../base/variables" as v;
+
+#main-navbar {
+    position: relative;
+
+    .icon.menu {
+        cursor: pointer;
+    }
+    .navbar {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+        color: white;
+        padding: 3rem;
+        .close-icon {
+            position: absolute;
+            top: 3rem;
+            right: 3rem;
+            font-size: 3rem;
+        }
+        .item {
+            font-size: 2rem;
+        }
+        &.active {
+            display: block;
+        }
+        @media (min-width: v.$tablet) {
+            width: auto;
+            padding: 5rem;
+        }
+    }
+    .navbar-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+}
