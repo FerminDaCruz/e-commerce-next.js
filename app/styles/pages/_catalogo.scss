@@ -1,0 +1,27 @@
+@use "../base/variables" as v;
+
+#catalogo-page {
+    h2 {
+        text-align: center;
+        font-size: 3rem;
+        margin: 2rem;
+        font-weight: bold;
+    }
+}
+
+#catalogo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    place-items: center;
+    margin: 1rem;
+    @media (min-width: v.$phone) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media (min-width: v.$tablet) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (min-width: v.$desktop) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}

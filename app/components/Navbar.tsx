@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { LuMenu } from "react-icons/lu";
 import { IoCloseCircleOutline } from "react-icons/io5";
+import Link from "next/link";
 
 export default function Navbar() {
     const [menuActive, setMenuActive] = useState(false);
@@ -20,11 +21,21 @@ export default function Navbar() {
                     className="close-icon"
                 />
                 <ul className="navbar-list">
-                    <li className="item">Inicio</li>
-                    <li className="item">Catálogo</li>
-                    <li className="item">Carrito</li>
-                    <li className="item">Sobre nosotros</li>
-                    <li className="item">Cuenta</li>
+                    <li className="item">
+                        <Link href={"/"}>Inicio</Link>
+                    </li>
+                    <li className="item">
+                        <Link href={"/catalogo"}>Catálogo</Link>
+                    </li>
+                    <li className="item">
+                        <Link href={"/carrito"}>Carrito</Link>
+                    </li>
+                    <li className="item">
+                        <Link href={"/"}>Sobre nosotros</Link>
+                    </li>
+                    <li className="item">
+                        <Link href={"/"}>Cuenta</Link>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Product } from "../catalogo/page";
+import Image from "next/image";
 
 interface ProductCardProps {
     product: Product;
@@ -8,7 +9,12 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
     return (
         <div className="product-card">
-            <img src={product.image} alt={product.title} />
+            <Image
+                src={product.image}
+                alt={product.title}
+                height={300}
+                width={200}
+            />
             <h3>{product.title}</h3>
             <div>
                 <p>${product.price}</p>

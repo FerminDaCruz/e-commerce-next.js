@@ -1,0 +1,50 @@
+@use "../base/variables" as v;
+
+.main-page {
+    .hero-section {
+        height: calc(100vh - 75.188px);
+        width: auto;
+        background-image: url("https://imgs.search.brave.com/JRaJpbu-mk3uA8L4JUf2Pc8c649xRmUT4LjfhRu4HKY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bmV3LWltYWdlLWd5/bS5jby51ay93cC1j/b250ZW50L3VwbG9h/ZHMvc2l0ZXMvMTUv/MjAyMi8wNi9kZWFk/bGlmdGVkaXQtNzY4/eDExNTIuanBn");
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+        text-align: center;
+        gap: 2rem;
+        text-shadow: 1px 1px 3px black;
+        h2 {
+            font-size: 2.6rem;
+            margin: 1.5rem;
+        }
+        p {
+            font-size: 2rem;
+            margin: 1.5rem;
+        }
+        .ver-catalogo {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            padding: 1rem;
+            font-size: 1.8rem;
+            border-radius: 50rem;
+            cursor: pointer;
+        }
+        @media (min-width: v.$tablet) {
+            h2 {
+                font-size: 3rem;
+            }
+            p {
+                font-size: 2.4rem;
+            }
+        }
+        @media (min-width: v.$desktop) {
+            h2 {
+                font-size: 4rem;
+            }
+            p {
+                font-size: 3rem;
+            }
+        }
+    }
+}

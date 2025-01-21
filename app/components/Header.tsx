@@ -1,6 +1,7 @@
 import { VscAccount } from "react-icons/vsc";
 import { FiShoppingCart } from "react-icons/fi";
 import Navbar from "./Navbar";
+import Link from "next/link";
 
 export default function Header() {
     return (
@@ -10,11 +11,15 @@ export default function Header() {
                 <h3 className="shop">tienda</h3>
             </div>
             <div className="center">
-                <h1>Gym-commerce</h1>
+                <Link href={"/"}>
+                    <h1>Gym-commerce</h1>
+                </Link>
             </div>
             <div className="right">
                 <VscAccount className="icon account" />
-                <FiShoppingCart className="icon" />
+                <Link href={"/carrito"}>
+                    <FiShoppingCart className="icon" />
+                </Link>
             </div>
         </header>
     );
