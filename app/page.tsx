@@ -9,7 +9,7 @@ export default function Home() {
                     Donde puedes encontrar todos los productos de gimnasio en el
                     mismo lugar.
                 </p>
-                <Link className="ver-catalogo" href={"/catalogo"}>
+                <Link className="ver-catalogo" href={"/catalogo/todos"}>
                     ver catálogo
                 </Link>
             </div>

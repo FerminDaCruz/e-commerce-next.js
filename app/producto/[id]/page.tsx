@@ -1,4 +1,4 @@
-import { products } from "@/app/data/products";
+import { Product } from "@/app/data/products";
 import Image from "next/image";
 import Link from "next/link";
 import { CiStar } from "react-icons/ci";
@@ -7,10 +7,17 @@ type Params = {
     id: string;
 };
 
-export default function Product({ params }: { params: Params }) {
+export default async function ProductPage({ params }: { params: Params }) {
     const { id } = params;
+    if (!id || isNaN(Number(id))) {
+        return <div>Error: ID de producto inválido.</div>;
+    }
 
-    const product = products.find((product) => product.id === parseInt(id));
+    const response = await fetch(`http://localhost:3000/api/product/${id}`, {
+        cache: "no-store",
+    });
+
+    const product: Product = await response.json();
 
     const srcImage =
         product?.image ||
@@ -55,17 +62,4 @@ export default function Product({ params }: { params: Params }) {
             </div>
         </div>
     );
-}
-
-export interface Product {
-    id: number;
-    image: string;
-    title: string;
-    description: string;
-    price: number;
-    category: string;
-    stock: number;
-    rating: number;
-    reviews: number;
-    features: string[];
 }

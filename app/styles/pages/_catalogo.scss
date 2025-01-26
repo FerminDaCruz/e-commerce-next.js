@@ -1,11 +1,46 @@
 @use "../base/variables" as v;
 
 #catalogo-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     h2 {
         text-align: center;
         font-size: 3rem;
         margin: 2rem;
         font-weight: bold;
+    }
+    h5 {
+        font-size: 1.6rem;
+    }
+    .categories {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        li {
+            text-align: center;
+            font-size: 1.4rem;
+            text-decoration: underline;
+        }
+    }
+    @media (min-width: v.$tablet) {
+        h2 {
+            font-size: 4rem;
+        }
+        h5 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .categories {
+            flex-direction: row;
+            li {
+                font-size: 1.8rem;
+            }
+        }
     }
 }
 

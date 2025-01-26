@@ -25,7 +25,7 @@ export default function Navbar() {
                         <Link href={"/"}>Inicio</Link>
                     </li>
                     <li className="item">
-                        <Link href={"/catalogo"}>Catálogo</Link>
+                        <Link href={"/catalogo/todos"}>Catálogo</Link>
                     </li>
                     <li className="item">
                         <Link href={"/carrito"}>Carrito</Link>

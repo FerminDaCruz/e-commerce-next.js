@@ -19,7 +19,7 @@ export const products: Product[] = [
         description:
             "Juego de mancuernas ajustables ideal para entrenamientos en casa y gimnasio.",
         price: 14999,
-        category: "Equipamiento",
+        category: "equipamiento",
         stock: 20,
         rating: 4.8,
         reviews: 152,
@@ -36,7 +36,7 @@ export const products: Product[] = [
         description:
             "Bandas de diferentes niveles de resistencia, perfectas para entrenamientos funcionales.",
         price: 3499,
-        category: "Accesorios",
+        category: "accesorios",
         stock: 50,
         rating: 4.6,
         reviews: 98,
@@ -53,7 +53,7 @@ export const products: Product[] = [
         description:
             "Colchoneta antideslizante para ejercicios de piso como yoga, pilates o estiramientos.",
         price: 5499,
-        category: "Equipamiento",
+        category: "equipamiento",
         stock: 30,
         rating: 4.7,
         reviews: 67,
@@ -70,7 +70,7 @@ export const products: Product[] = [
         description:
             "Botella mezcladora para batidos de proteínas con compartimento para suplementos.",
         price: 1999,
-        category: "Accesorios",
+        category: "accesorios",
         stock: 100,
         rating: 4.5,
         reviews: 120,
@@ -87,7 +87,7 @@ export const products: Product[] = [
         description:
             "Cinturón de cuero ajustable para soporte lumbar en ejercicios de fuerza.",
         price: 7499,
-        category: "Accesorios",
+        category: "accesorios",
         stock: 15,
         rating: 4.9,
         reviews: 54,

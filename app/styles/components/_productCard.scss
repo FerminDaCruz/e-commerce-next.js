@@ -1,3 +1,5 @@
+@use "../base/variables" as v;
+
 .product-card {
     height: 30rem;
     width: 20rem;
@@ -26,6 +28,16 @@
             color: white;
             padding: 0.5rem;
             border-radius: 20px;
+        }
+    }
+    @media (min-width: v.$tablet) {
+        height: 40rem;
+        width: 30rem;
+        img {
+            height: 30rem;
+        }
+        div {
+            font-size: 1.6rem;
         }
     }
 }

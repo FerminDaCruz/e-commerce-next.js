@@ -8,7 +8,9 @@ export default function Header() {
         <header id="main-header">
             <div className="left">
                 <Navbar />
-                <h3 className="shop">tienda</h3>
+                <h3 className="shop">
+                    <Link href={"/catalogo/todos"}>tienda</Link>
+                </h3>
             </div>
             <div className="center">
                 <Link href={"/"}>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Product } from "../catalogo/page";
+import { Product } from "../data/products";
 import Image from "next/image";
 
 interface ProductCardProps {
@@ -13,7 +13,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 src={product.image}
                 alt={product.title}
                 height={300}
-                width={200}
+                width={300}
             />
             <h3>{product.title}</h3>
             <div>
