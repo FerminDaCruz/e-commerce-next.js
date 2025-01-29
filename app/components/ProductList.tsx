@@ -1,5 +1,5 @@
 import ProductCard from "./ProductCard";
-import { Product } from "../data/products";
+import { Product } from "../types";
 
 type ProductListProps = {
     category: string; // Asegúrate de que 'category' sea una cadena

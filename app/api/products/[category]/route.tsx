@@ -8,8 +8,6 @@ export async function GET(
 ) {
     try {
         const { category } = params;
-        //CONSOLE.LOG
-        console.log("Category received:", category);
 
         if (!category) {
             return NextResponse.json(
@@ -20,26 +18,14 @@ export async function GET(
 
         const productosRef = collection(db, "productos");
 
-        //CONSOLE.LOG
-        console.log("Reference to productos collection created");
-
         const q =
             category === "todos"
                 ? productosRef
                 : query(productosRef, where("category", "==", category));
 
-        //CONSOLE.LOG
-        console.log("Query created:", q);
-
         const querySnapshot = await getDocs(q);
 
-        //CONSOLE.LOG
-        console.log("Query snapshot fetched:", querySnapshot);
-
         const docs = querySnapshot.docs.map((doc) => doc.data());
-
-        //CONSOLE.LOG
-        console.log("Mapped documents:", docs);
 
         if (docs.length === 0) {
             return NextResponse.json(

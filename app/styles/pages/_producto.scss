@@ -1,60 +1,60 @@
 @use "../base/variables" as v;
 
 .product-details {
-    h2 {
-        text-align: center;
-        font-size: 3rem;
-        margin: 1rem 2rem;
-    }
-    div {
+    margin: 0 4rem;
+    .main-section {
         display: flex;
         flex-direction: column;
-        img {
-            width: 50rem;
-            @media (min-width: v.$tablet) {
-                width: 60rem;
-            }
+        justify-content: center;
+        .image {
+            height: 100%;
+            width: auto;
         }
-        div {
+        .data {
             display: flex;
             flex-direction: column;
-            margin: 1rem;
-            font-size: 1.2rem;
             gap: 1rem;
-            p span {
+            .title {
+                font-size: 2.8rem;
+            }
+            .price {
+                font-size: 2.6rem;
                 font-weight: bold;
-            }
-            h4 {
-                font-size: 1.6rem;
-            }
-            div {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                font-size: 1.4rem;
-                .price {
-                    text-decoration: underline;
-                }
-                .boton-comprar {
-                    cursor: pointer;
-                    background-color: black;
-                    color: white;
-                    padding: 1rem;
-                    border-radius: 30px;
-                }
-            }
-            @media (min-width: v.$tablet) {
-                gap: 2rem;
-                font-size: 1.6rem;
-                h4 {
-                    font-size: 2.4rem;
-                    margin: 2rem 0;
-                }
             }
         }
         @media (min-width: v.$tablet) {
             flex-direction: row;
+            .image {
+                width: 60%;
+            }
+            .data {
+                position: relative;
+                gap: 2rem;
+                .title {
+                    font-size: 3.8rem;
+                }
+                .price {
+                    font-size: 3.4rem;
+                }
+                .buy-div {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .description-section {
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        h5 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1.4rem;
+            color: rgba(53, 53, 53, 0.8);
         }
     }
 }

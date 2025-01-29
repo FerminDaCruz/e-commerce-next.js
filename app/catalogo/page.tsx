@@ -2,22 +2,8 @@ import ProductList from "@/app/components/ProductList";
 import Link from "next/link";
 import { Suspense } from "react";
 
-export function generateStaticParams() {
-    return [
-        { category: "todos" },
-        { category: "equipamiento" },
-        { category: "accesorios" },
-    ];
-}
-
-export const revalidate = 3600;
-
-export default async function Catalogo({
-    params,
-}: {
-    params: { category: string };
-}) {
-    const { category } = params;
+export default async function Catalogo() {
+    const category = "todos";
 
     return (
         <div id="catalogo-page">

@@ -10,6 +10,17 @@ export interface Product {
     reviews: number;
     features: string[];
 }
+export interface CartItem extends Product {
+    quantity: number;
+}
+
+export interface CartContextType {
+    cart: CartItem[];
+    addToCart: (product: Product, quantity: number) => void;
+    removeFromCart: (productId: number) => void;
+    clearCart: () => void;
+    updateCartItemQuantity: (productId: number, quantity: number) => void;
+}
 
 export const products: Product[] = [
     {

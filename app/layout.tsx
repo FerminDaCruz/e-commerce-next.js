@@ -3,6 +3,7 @@ import Head from "next/head";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./styles/globals.scss";
+import { CartProvider } from "./context/CartContext";
 
 type Metadata = {
     title: string;
@@ -32,9 +33,11 @@ export default function Layout({ children }: { children: ReactNode }) {
                 <title>Mi Proyecto Next.js</title>
             </Head>
             <body>
-                <Header />
-                {children}
-                <Footer />
+                <CartProvider>
+                    <Header />
+                    {children}
+                    <Footer />
+                </CartProvider>
             </body>
         </html>
     );
