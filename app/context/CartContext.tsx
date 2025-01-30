@@ -13,13 +13,15 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
     const addToCart = (product: Product, quantity = 1) => {
         setCart((prevCart) => {
+            //busca el item si existe
             const existingItem = prevCart.find(
                 (item) => item.id === product.id
             );
+
             if (existingItem) {
                 return prevCart.map((item) =>
                     item.id === product.id
-                        ? { ...item, quantity: item.quantity + 1 }
+                        ? { ...item, quantity: item.quantity + quantity }
                         : item
                 );
             }
