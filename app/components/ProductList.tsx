@@ -7,9 +7,6 @@ type ProductListProps = {
 
 export default async function ProductList({ category }: ProductListProps) {
     try {
-        // CONSOLE.LOG
-        console.log("Fetching products for category:", category);
-
         const response = await fetch(
             `http://localhost:3000/api/products/${category}`,
             {
@@ -17,20 +14,10 @@ export default async function ProductList({ category }: ProductListProps) {
             }
         );
 
-        // CONSOLE.LOG
-        console.log("Fetch response:", {
-            status: response.status,
-            statusText: response.statusText,
-            ok: response.ok,
-        });
-
         if (!response.ok) {
             throw new Error(`Error: ${response.statusText}`);
         }
         const data: Product[] = await response.json();
-
-        // CONSOLE.LOG
-        console.log("Fetched products:", data);
 
         return (
             <section id="catalogo-grid">

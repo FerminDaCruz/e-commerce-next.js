@@ -18,8 +18,11 @@ export default function Header() {
                 </Link>
             </div>
             <div className="right">
-                <VscAccount className="icon account" />
-                <Link href={"/carrito"}>
+                <Link href={"/admin"}>
+                    <VscAccount className="icon account" />
+                </Link>
+
+                <Link href={"/cart"}>
                     <FiShoppingCart className="icon" />
                 </Link>
             </div>

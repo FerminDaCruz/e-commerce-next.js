@@ -1,0 +1,92 @@
+.shopping-cart {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+
+    .cart-title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .empty-cart {
+        color: #777;
+        font-style: italic;
+    }
+
+    .cart-items {
+        margin-top: 15px;
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+
+            .item-info {
+                font-weight: bold;
+            }
+
+            .item-actions {
+                display: flex;
+                align-items: center;
+
+                .item-price {
+                    margin-right: 10px;
+                    font-weight: bold;
+                    color: #28a745;
+                }
+
+                .remove-button {
+                    background-color: #dc3545;
+                    color: white;
+                    border: none;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #c82333;
+                    }
+                }
+            }
+        }
+    }
+
+    .cart-summary {
+        margin-top: 20px;
+        text-align: right;
+
+        .total-price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cart-buttons {
+            .clear-cart {
+                background-color: #ff9800;
+                color: white;
+                border: none;
+                padding: 8px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #e68900;
+                }
+            }
+            .buy-cart {
+                background-color: #2ca131;
+                color: white;
+                border: none;
+                padding: 8px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #218025;
+                }
+            }
+        }
+    }
+}

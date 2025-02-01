@@ -1,4 +1,3 @@
-import Cart from "@/app/components/Cart";
 import QtySelector from "@/app/components/QtySelector";
 import { Product } from "@/app/types";
 import Image from "next/image";
@@ -38,7 +37,9 @@ export default async function ProductPage({ params }: { params: Params }) {
                     <h2 className="title">{product?.title}</h2>
                     <hr />
                     <p className="price">${product?.price}</p>
+
                     <QtySelector product={product} />
+                    <p className="stock">stock: {product.stock}</p>
                 </div>
             </section>
 
@@ -47,8 +48,6 @@ export default async function ProductPage({ params }: { params: Params }) {
                 <hr />
                 <p>{product.description}</p>
             </section>
-
-            <Cart />
         </div>
     );
 }

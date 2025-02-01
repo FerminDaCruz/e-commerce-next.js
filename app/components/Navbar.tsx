@@ -25,16 +25,13 @@ export default function Navbar() {
                         <Link href={"/"}>Inicio</Link>
                     </li>
                     <li className="item">
-                        <Link href={"/catalogo/todos"}>Catálogo</Link>
+                        <Link href={"/catalogo"}>Catálogo</Link>
                     </li>
                     <li className="item">
-                        <Link href={"/carrito"}>Carrito</Link>
+                        <Link href={"/cart"}>Carrito</Link>
                     </li>
                     <li className="item">
-                        <Link href={"/"}>Sobre nosotros</Link>
-                    </li>
-                    <li className="item">
-                        <Link href={"/"}>Cuenta</Link>
+                        <Link href={"/admin"}>Admin</Link>
                     </li>
                 </ul>
             </div>

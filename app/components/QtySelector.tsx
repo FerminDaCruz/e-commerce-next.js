@@ -12,7 +12,11 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
     const { addToCart } = useCart();
 
-    const handleIncrease = () => setQuantity((prev) => prev + 1);
+    const handleIncrease = () => {
+        if (quantity <= product.stock) {
+            setQuantity((prev) => prev + 1);
+        }
+    };
     const handleDecrease = () => setQuantity((prev) => Math.max(1, prev - 1));
 
     const handleAddToCart = () => {

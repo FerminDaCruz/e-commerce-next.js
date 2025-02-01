@@ -13,6 +13,7 @@
     .navbar {
         display: none;
         position: fixed;
+        z-index: 10000;
         top: 0;
         left: 0;
         height: 100vh;
@@ -34,7 +35,7 @@
         }
         @media (min-width: v.$tablet) {
             width: auto;
-            padding: 5rem;
+            padding: 5rem 10rem;
         }
     }
     .navbar-list {
