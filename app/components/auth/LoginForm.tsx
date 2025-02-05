@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useAuthContext } from "@/app/context/AuthContext";
 
 export default function LoginForm() {
-    const { registerUser, loginUser } = useAuthContext();
+    const { registerUser, loginUser, googleLogin } = useAuthContext();
     const [values, setValues] = useState({
         email: "",
         password: "",
@@ -48,6 +48,9 @@ export default function LoginForm() {
                     onClick={() => loginUser(values)}
                 >
                     Ingresar
+                </button>
+                <button className="login-button" onClick={googleLogin}>
+                    Ingresar con Google
                 </button>
                 <button
                     className="login-button"

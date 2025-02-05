@@ -12,12 +12,10 @@ export function generateStaticParams() {
 
 export const revalidate = 3600;
 
-export default async function Catalogo({
-    params,
-}: {
-    params: { category: string };
+export default async function Catalogo(context: {
+    params: Promise<{ category: string }>;
 }) {
-    const { category } = params;
+    const { category } = await context.params;
 
     return (
         <div id="catalogo-page">

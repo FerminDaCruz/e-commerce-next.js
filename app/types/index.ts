@@ -22,9 +22,9 @@ export interface CartItem extends Product {
 export interface CartContextType {
     cart: CartItem[];
     addToCart: (product: Product, quantity: number) => void;
-    removeFromCart: (productId: number) => void;
+    removeFromCart: (productId: string) => void;
     clearCart: () => void;
-    updateCartItemQuantity: (productId: number, quantity: number) => void;
+    updateCartItemQuantity: (productId: string, quantity: number) => void;
 }
 
 export interface User {
@@ -44,6 +44,7 @@ export interface AuthContextType {
         password: string;
     }) => Promise<User | void>;
     logout: () => Promise<void>;
+    googleLogin: () => Promise<void>;
 }
 
 export interface AuthProviderProps {
@@ -52,5 +53,4 @@ export interface AuthProviderProps {
 
 export interface AdminLayoutProps {
     children: ReactNode;
-    login: ReactNode;
 }

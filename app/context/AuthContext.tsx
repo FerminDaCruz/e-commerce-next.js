@@ -2,12 +2,13 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContextType, AuthProviderProps, User } from "../types";
-import { auth } from "@/firebase/config";
+import { auth, provider } from "@/firebase/config";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
+    signInWithPopup,
 } from "firebase/auth";
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -58,6 +59,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         await signOut(auth);
     };
 
+    const googleLogin = async () => {
+        await signInWithPopup(auth, provider);
+    };
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -77,7 +82,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, registerUser, loginUser, logout }}>
+        <AuthContext.Provider
+            value={{
+                user,
+                registerUser,
+                loginUser,
+                logout,
+                googleLogin,
+            }}
+        >
             {children}
         </AuthContext.Provider>
     );

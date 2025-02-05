@@ -4,12 +4,19 @@ import { db } from "@/firebase/config";
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: { params: Promise<{ id: string }> }
 ) {
     try {
-        const { id } = params;
-        const productsRef = collection(db, "productos");
+        const { id } = await context.params;
 
+        if (!id) {
+            return NextResponse.json(
+                { error: "Missing id parameter" },
+                { status: 400 }
+            );
+        }
+
+        const productsRef = collection(db, "productos");
         const productQuery = query(productsRef, where("id", "==", id));
         const querySnapshot = await getDocs(productQuery);
 

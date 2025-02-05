@@ -2,12 +2,10 @@ import QtySelector from "@/app/components/QtySelector";
 import { Product } from "@/app/types";
 import Image from "next/image";
 
-type Params = {
-    id: string;
-};
-
-export default async function ProductPage({ params }: { params: Params }) {
-    const { id } = params;
+export default async function ProductPage(context: {
+    params: Promise<{ id: string }>;
+}) {
+    const { id } = await context.params;
     if (!id || isNaN(Number(id))) {
         return <div>Error: ID de producto inválido.</div>;
     }
