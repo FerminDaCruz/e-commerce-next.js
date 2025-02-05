@@ -8,7 +8,7 @@ type ProductListProps = {
 export default async function ProductList({ category }: ProductListProps) {
     try {
         const response = await fetch(
-            `http://localhost:3000/api/products/${category}`,
+            `http://${process.env.VERCEL_URL}/api/products/${category}`,
             {
                 cache: "no-store",
             }

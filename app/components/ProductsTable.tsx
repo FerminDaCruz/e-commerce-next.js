@@ -7,9 +7,12 @@ export default async function ProductsTable() {
     let items: Product[] = [];
 
     try {
-        const res = await fetch("http://localhost:3000/api/products/todos", {
-            cache: "no-store",
-        });
+        const res = await fetch(
+            "http://${process.env.VERCEL_URL}/api/products/todos",
+            {
+                cache: "no-store",
+            }
+        );
 
         if (!res.ok) {
             throw new Error(`API error: ${res.status} ${res.statusText}`);
