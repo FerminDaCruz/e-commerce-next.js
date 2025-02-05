@@ -1,7 +1,9 @@
 import ProductList from "@/app/components/ProductList";
+import { baseUrl } from "@/app/constants/constants";
+import { Product } from "@/app/types";
 import Link from "next/link";
-import { Suspense } from "react";
 
+// Generar las rutas estáticas para las categorías
 export function generateStaticParams() {
     return [
         { category: "todos" },
@@ -10,32 +12,50 @@ export function generateStaticParams() {
     ];
 }
 
-export const revalidate = 3600;
-
-export default async function Catalogo(context: {
+// Este componente ahora hace el fetch directamente dentro de la función
+export default async function Catalogo({
+    params,
+}: {
     params: Promise<{ category: string }>;
 }) {
-    const { category } = await context.params;
+    const { category } = await params;
 
-    return (
-        <div id="catalogo-page">
-            <h2>Catálogo</h2>
+    try {
+        const response = await fetch(`${baseUrl}/api/products/${category}`, {
+            cache: "default",
+            next: {
+                revalidate: 3600,
+            },
+        });
 
-            <h5>Categorias</h5>
-            <ul className="categories">
-                <li>
-                    <Link href={"/catalogo/todos"}>todos</Link>
-                </li>
-                <li>
-                    <Link href={"/catalogo/accesorios"}>accesorios</Link>
-                </li>
-                <li>
-                    <Link href={"/catalogo/equipamiento"}>equipamiento</Link>
-                </li>
-            </ul>
-            <Suspense fallback={<div>cargando...</div>}>
-                <ProductList category={category} />
-            </Suspense>
-        </div>
-    );
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+
+        const products: Product[] = await response.json();
+
+        return (
+            <div id="catalogo-page">
+                <h2>Catálogo</h2>
+                <h5>Categorías</h5>
+                <ul className="categories">
+                    <li>
+                        <Link href={"/catalogo/todos"}>todos</Link>
+                    </li>
+                    <li>
+                        <Link href={"/catalogo/accesorios"}>accesorios</Link>
+                    </li>
+                    <li>
+                        <Link href={"/catalogo/equipamiento"}>
+                            equipamiento
+                        </Link>
+                    </li>
+                </ul>
+                <ProductList products={products} />
+            </div>
+        );
+    } catch (error) {
+        console.error("Error fetching product list:", error);
+        return <div>Error loading products</div>;
+    }
 }

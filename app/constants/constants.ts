@@ -1,3 +1,4 @@
-export const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}` // Para producción en Vercel
-    : "http://localhost:3000";
+export const baseUrl =
+    process.env.NODE_ENV === "production"
+        ? "https://e-commerce-next-js-lovat.vercel.app/"
+        : "http://localhost:3000";

@@ -1,18 +1,19 @@
 import Image from "next/image";
 import { Product } from "../types";
 import Link from "next/link";
+import { baseUrl } from "../constants/constants";
 
 export default async function ProductsTable() {
     console.log("Rendering ProductsTable...");
     let items: Product[] = [];
 
     try {
-        const res = await fetch(
-            "http://${process.env.VERCEL_URL}/api/products/todos",
-            {
-                cache: "no-store",
-            }
-        );
+        const res = await fetch(`${baseUrl}/api/products/todos`, {
+            cache: "default",
+            next: {
+                revalidate: 3600,
+            },
+        });
 
         if (!res.ok) {
             throw new Error(`API error: ${res.status} ${res.statusText}`);

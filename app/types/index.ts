@@ -54,3 +54,7 @@ export interface AuthProviderProps {
 export interface AdminLayoutProps {
     children: ReactNode;
 }
+
+export type ProductListProps = {
+    category: string;
+};

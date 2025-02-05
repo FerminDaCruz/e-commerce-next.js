@@ -1,4 +1,5 @@
 import QtySelector from "@/app/components/QtySelector";
+import { baseUrl } from "@/app/constants/constants";
 import { Product } from "@/app/types";
 import Image from "next/image";
 
@@ -10,12 +11,12 @@ export default async function ProductPage(context: {
         return <div>Error: ID de producto inválido.</div>;
     }
 
-    const response = await fetch(
-        `http://${process.env.VERCEL_URL}/api/product/${id}`,
-        {
-            cache: "no-store",
-        }
-    );
+    const response = await fetch(`${baseUrl}/api/product/${id}`, {
+        cache: "default",
+        next: {
+            revalidate: 3600,
+        },
+    });
 
     const product: Product = await response.json();
 
