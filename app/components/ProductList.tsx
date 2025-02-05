@@ -1,5 +1,6 @@
 import ProductCard from "./ProductCard";
 import { Product } from "../types";
+import { baseUrl } from "../constants/constants";
 
 type ProductListProps = {
     category: string; // Asegúrate de que 'category' sea una cadena
@@ -7,12 +8,9 @@ type ProductListProps = {
 
 export default async function ProductList({ category }: ProductListProps) {
     try {
-        const response = await fetch(
-            `http://${process.env.VERCEL_URL}/api/products/${category}`,
-            {
-                cache: "no-store",
-            }
-        );
+        const response = await fetch(`${baseUrl}/api/products/${category}`, {
+            cache: "no-store",
+        });
 
         if (!response.ok) {
             throw new Error(`Error: ${response.statusText}`);
