@@ -7,7 +7,7 @@ export async function GET(
     { params }: { params: { category: string } }
 ) {
     try {
-        const { category } = params;
+        const { category } = await params;
 
         if (!category) {
             return NextResponse.json(
@@ -20,12 +20,15 @@ export async function GET(
 
         const q =
             category === "todos"
-                ? productosRef
+                ? query(productosRef)
                 : query(productosRef, where("category", "==", category));
 
         const querySnapshot = await getDocs(q);
 
-        const docs = querySnapshot.docs.map((doc) => doc.data());
+        const docs = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+        }));
 
         if (docs.length === 0) {
             return NextResponse.json(

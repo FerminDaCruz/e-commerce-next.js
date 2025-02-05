@@ -1,3 +1,11 @@
+import { ReactNode } from "react";
+
+export type Metadata = {
+    title: string;
+    description: string;
+    keywords: Array<string>;
+};
+
 export interface Product {
     id: string;
     image: string;
@@ -17,4 +25,31 @@ export interface CartContextType {
     removeFromCart: (productId: number) => void;
     clearCart: () => void;
     updateCartItemQuantity: (productId: number, quantity: number) => void;
+}
+
+export interface User {
+    logged: boolean;
+    email?: string;
+    uid?: string;
+}
+
+export interface AuthContextType {
+    user: User;
+    registerUser: (values: {
+        email: string;
+        password: string;
+    }) => Promise<User | void>;
+    loginUser: (values: {
+        email: string;
+        password: string;
+    }) => Promise<User | void>;
+}
+
+export interface AuthProviderProps {
+    children: ReactNode;
+}
+
+export interface AdminLayoutProps {
+    children: ReactNode;
+    login: ReactNode;
 }

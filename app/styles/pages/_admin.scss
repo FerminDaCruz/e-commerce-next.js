@@ -1,24 +1,15 @@
-.products-table {
-    width: 100%;
-    thead {
-        text-transform: uppercase;
-        tr {
-            th {
-                padding: 2rem 1rem;
-            }
-        }
+.admin-page {
+    h2 {
+        font-size: 2.8rem;
+        margin-left: 2rem;
+        margin-bottom: 1rem;
     }
-    tbody {
-        tr {
-            td {
-                padding: 1rem;
-                .link {
-                    color: white;
-                    background-color: rgb(48, 233, 94);
-                    padding: 1rem;
-                    border-radius: 5px;
-                }
-            }
-        }
+    .create-product {
+        margin: 2rem;
+        font-size: 1.8rem;
+        background-color: #007bff;
+        color: white;
+        padding: 1rem;
+        border-radius: 10px;
     }
 }
