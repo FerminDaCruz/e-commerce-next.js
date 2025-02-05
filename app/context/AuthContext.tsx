@@ -1,11 +1,13 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContextType, AuthProviderProps, User } from "../types";
 import { auth } from "@/firebase/config";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut,
 } from "firebase/auth";
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -25,50 +27,57 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         uid: undefined,
     });
 
-    const loginUser = async (values: { email: string; password: string }) => {
-        try {
-            const userCredential = await signInWithEmailAndPassword(
-                auth,
-                values.email,
-                values.password
-            );
-
-            const user = userCredential.user;
-
-            setUser({
-                logged: true,
-                email: user.email ?? undefined,
-                uid: user.uid ?? undefined,
-            });
-        } catch (error) {
-            console.error("Error al iniciar sesión:", error);
-        }
-    };
-
     const registerUser = async (values: {
         email: string;
         password: string;
     }) => {
         try {
-            const userCredential = await createUserWithEmailAndPassword(
+            await createUserWithEmailAndPassword(
                 auth,
                 values.email,
                 values.password
             );
-            const newUser = userCredential.user;
-
-            setUser({
-                logged: true,
-                email: newUser.email ?? undefined,
-                uid: newUser.uid ?? undefined,
-            });
         } catch (error) {
             console.log("Error registrando usuario:", error);
         }
     };
 
+    const loginUser = async (values: { email: string; password: string }) => {
+        try {
+            await signInWithEmailAndPassword(
+                auth,
+                values.email,
+                values.password
+            );
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error);
+        }
+    };
+
+    const logout = async () => {
+        await signOut(auth);
+    };
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser({
+                    logged: true,
+                    email: user.email ?? undefined,
+                    uid: user.uid ?? undefined,
+                });
+            } else {
+                setUser({
+                    logged: false,
+                    email: undefined,
+                    uid: undefined,
+                });
+            }
+        });
+    }, []);
+
     return (
-        <AuthContext.Provider value={{ user, registerUser, loginUser }}>
+        <AuthContext.Provider value={{ user, registerUser, loginUser, logout }}>
             {children}
         </AuthContext.Provider>
     );

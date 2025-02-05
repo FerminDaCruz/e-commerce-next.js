@@ -43,6 +43,7 @@ export interface AuthContextType {
         email: string;
         password: string;
     }) => Promise<User | void>;
+    logout: () => Promise<void>;
 }
 
 export interface AuthProviderProps {
