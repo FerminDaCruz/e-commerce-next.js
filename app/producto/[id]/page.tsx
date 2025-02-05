@@ -10,9 +10,12 @@ export default async function ProductPage(context: {
         return <div>Error: ID de producto inválido.</div>;
     }
 
-    const response = await fetch(`http://localhost:3000/api/product/${id}`, {
-        cache: "no-store",
-    });
+    const response = await fetch(
+        `http://${process.env.VERCEL_URL}/api/product/${id}`,
+        {
+            cache: "no-store",
+        }
+    );
 
     const product: Product = await response.json();
 
